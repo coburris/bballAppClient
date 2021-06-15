@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import MainPage from './components/MainPage';
+import {Switch, Route} from 'react-router-dom';
+import AboutPage from './components/AboutPage';
+import AdminPage from './components/AdminPage';
+import ClientPage from './components/ClientPage';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from './config/theme.config'
 
-function App() {
+
+const App = () => {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <ThemeProvider theme={theme}> */}
+      <Switch>
+        <Route exact path={"/"} component={MainPage}></Route>
+        <Route exact path={"/about"} component={AboutPage}></Route>
+        <Route exact path={"/admin"} component={AdminPage}></Route>
+        <Route exact path={"/client"} component={ClientPage}></Route>
+      </Switch>
+      {/* </ThemeProvider> */}
+      {/* <MainPage/> */}
+      {/* <Signup/> */}
     </div>
   );
 }
